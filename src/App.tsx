@@ -1,9 +1,14 @@
+import { Routes, Route } from 'react-router-dom';
 import { Home } from './pages/Home';
-import './index.css';
+import { AdminDashboard } from './pages/AdminDashboard';
 
 function App() {
-  return <Home />;
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/admin" element={<AdminDashboard />} />
+    </Routes>
+  );
 }
 
 export default App;
-
