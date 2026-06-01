@@ -865,3 +865,34 @@ textarea {
   background: linear-gradient(135deg, #ef4444, #f97316);
   box-shadow: 0 16px 36px rgba(239, 68, 68, 0.18);
 }
+
+.admin-card-header div p {
+  margin: 6px 0 0;
+  color: #52657a;
+  font-weight: 700;
+}
+
+.admin-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.admin-filters button {
+  padding: 11px 16px;
+  color: #1e40af;
+  background: #eff6ff;
+  border: 1px solid rgba(96, 165, 250, 0.35);
+  box-shadow: none;
+}
+
+.admin-filters button:hover {
+  transform: translateY(-2px);
+}
+
+.admin-filters .filter-active {
+  color: white;
+  background: linear-gradient(135deg, #2563eb, #38bdf8);
+  box-shadow: 0 14px 30px rgba(37, 99, 235, 0.22);
+}
