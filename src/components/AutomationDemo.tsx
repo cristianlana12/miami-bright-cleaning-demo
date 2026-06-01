@@ -10,7 +10,7 @@ export function AutomationDemo() {
           <p>
             This demo shows how a cleaning business can receive online bookings,
             manage requests from an admin dashboard and automatically notify
-            customers when their service status changes.
+            customers by email when their service status changes.
           </p>
 
           <div className="automation-list">
@@ -31,7 +31,7 @@ export function AutomationDemo() {
 
             <div>
               <strong>04</strong>
-              <span>The customer receives email and WhatsApp notifications</span>
+              <span>The customer receives automatic email notifications</span>
             </div>
           </div>
         </div>
@@ -44,17 +44,17 @@ export function AutomationDemo() {
 
           <div className="automation-step active">
             <span>Booking received</span>
-            <small>Email + WhatsApp sent</small>
+            <small>Email notification sent</small>
           </div>
 
           <div className="automation-step">
             <span>Status updated</span>
-            <small>Admin confirms request</small>
+            <small>Admin confirms, completes or cancels</small>
           </div>
 
           <div className="automation-step">
             <span>Customer notified</span>
-            <small>Message delivered instantly</small>
+            <small>Email delivered automatically</small>
           </div>
         </div>
       </div>

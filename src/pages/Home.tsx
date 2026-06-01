@@ -7,6 +7,7 @@ import { Footer } from '../components/Footer';
 import { Navbar } from '../components/Navbar';
 import { WhyChooseUs } from '../components/WhyChooseUs';
 import { AutomationDemo } from '../components/AutomationDemo';
+import { SystemIncludes } from '../components/SystemIncludes';
 
 export function Home() {
   return (
@@ -16,6 +17,7 @@ export function Home() {
       <Services />
       <WhyChooseUs />
       <AutomationDemo />
+      <SystemIncludes />
       <Pricing />
       <BookingForm />
       <Testimonials />

@@ -9,8 +9,10 @@ export function Navbar() {
       <nav className="navbar-links">
         <a href="#services">Services</a>
         <a href="#why-us">Why us</a>
+        <a href="#system">System</a>
         <a href="#pricing">Pricing</a>
         <a href="#booking">Booking</a>
+        <a href="/admin">Admin</a>
       </nav>
 
       <a href="#booking" className="navbar-button">

@@ -1016,3 +1016,81 @@ textarea {
     padding: 26px;
   }
 }
+
+.system-section {
+  padding-top: 50px;
+}
+
+.system-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.system-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 260px;
+  padding: 28px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(147, 197, 253, 0.45);
+  box-shadow: 0 24px 60px rgba(15, 39, 71, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.system-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 75px rgba(15, 39, 71, 0.12);
+}
+
+.system-card::after {
+  content: "";
+  position: absolute;
+  right: -46px;
+  bottom: -46px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: rgba(96, 165, 250, 0.13);
+}
+
+.system-card span {
+  display: inline-flex;
+  width: fit-content;
+  padding: 8px 12px;
+  margin-bottom: 26px;
+  border-radius: 999px;
+  color: #1d4ed8;
+  background: #eff6ff;
+  font-size: 0.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.system-card h3 {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 14px;
+  color: #0f2747;
+  font-size: 1.35rem;
+}
+
+.system-card p {
+  position: relative;
+  z-index: 1;
+  color: #52657a;
+  line-height: 1.7;
+}
+
+@media (max-width: 1000px) {
+  .system-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .system-grid {
+    grid-template-columns: 1fr;
+  }
+}
