@@ -6,6 +6,7 @@ import { Testimonials } from '../components/Testimonials';
 import { Footer } from '../components/Footer';
 import { Navbar } from '../components/Navbar';
 import { WhyChooseUs } from '../components/WhyChooseUs';
+import { AutomationDemo } from '../components/AutomationDemo';
 
 export function Home() {
   return (
@@ -14,6 +15,7 @@ export function Home() {
       <Hero />
       <Services />
       <WhyChooseUs />
+      <AutomationDemo />
       <Pricing />
       <BookingForm />
       <Testimonials />
