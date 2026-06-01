@@ -13,6 +13,15 @@ const initialForm: Booking = {
   message: '',
 };
 
+const estimatedPrices: Record<ServiceType, number> = {
+  house_cleaning: 99,
+  deep_cleaning: 189,
+  office_cleaning: 149,
+  move_in_out: 229,
+  airbnb_cleaning: 129,
+  post_construction: 279,
+};
+
 export function BookingForm() {
   const [form, setForm] = useState<Booking>(initialForm);
   const [loading, setLoading] = useState(false);
@@ -38,8 +47,16 @@ export function BookingForm() {
     setErrorMessage('');
 
     const bookingToInsert = {
-      ...form,
+      full_name: form.full_name.trim(),
+      email: form.email.trim(),
+      phone: form.phone.trim(),
+      service_type: form.service_type,
+      booking_date: form.booking_date,
+      booking_time: form.booking_time,
+      address: form.address.trim(),
+      message: form.message?.trim() || null,
       status: 'pending',
+      estimated_price: estimatedPrices[form.service_type],
     };
 
     const { error } = await supabase.from('bookings').insert([bookingToInsert]);
@@ -47,8 +64,8 @@ export function BookingForm() {
     setLoading(false);
 
     if (error) {
+      console.error('Supabase insert error:', error);
       setErrorMessage('There was an error creating your booking. Please try again.');
-      console.error(error);
       return;
     }
 
@@ -62,7 +79,8 @@ export function BookingForm() {
         <span className="eyebrow">Book online</span>
         <h2>Schedule your cleaning in minutes</h2>
         <p>
-          Tell us what you need and our team will contact you to confirm your appointment.
+          Tell us what you need and our team will contact you to confirm your
+          appointment.
         </p>
       </div>
 
@@ -76,6 +94,7 @@ export function BookingForm() {
               value={form.full_name}
               onChange={handleChange}
               required
+              minLength={3}
               placeholder="Emily Johnson"
             />
           </label>
@@ -100,6 +119,7 @@ export function BookingForm() {
               value={form.phone}
               onChange={handleChange}
               required
+              minLength={7}
               placeholder="+1 305 555 1234"
             />
           </label>
@@ -112,12 +132,12 @@ export function BookingForm() {
               onChange={handleChange}
               required
             >
-              <option value="house_cleaning">House Cleaning</option>
-              <option value="deep_cleaning">Deep Cleaning</option>
-              <option value="office_cleaning">Office Cleaning</option>
-              <option value="move_in_out">Move In / Move Out</option>
-              <option value="airbnb_cleaning">Airbnb Cleaning</option>
-              <option value="post_construction">Post Construction</option>
+              <option value="house_cleaning">House Cleaning - from $99</option>
+              <option value="deep_cleaning">Deep Cleaning - from $189</option>
+              <option value="office_cleaning">Office Cleaning - from $149</option>
+              <option value="move_in_out">Move In / Move Out - from $229</option>
+              <option value="airbnb_cleaning">Airbnb Cleaning - from $129</option>
+              <option value="post_construction">Post Construction - from $279</option>
             </select>
           </label>
 
@@ -152,6 +172,7 @@ export function BookingForm() {
             value={form.address}
             onChange={handleChange}
             required
+            minLength={5}
             placeholder="Brickell, Miami, FL"
           />
         </label>
@@ -166,6 +187,11 @@ export function BookingForm() {
             rows={5}
           />
         </label>
+
+        <div className="booking-summary">
+          <span>Estimated starting price</span>
+          <strong>${estimatedPrices[form.service_type]}</strong>
+        </div>
 
         {successMessage && <p className="success-message">{successMessage}</p>}
         {errorMessage && <p className="error-message">{errorMessage}</p>}
