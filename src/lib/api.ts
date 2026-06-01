@@ -43,6 +43,8 @@ export async function updateBookingStatus(
   });
 
   if (!response.ok) {
+    const errorData = await response.json().catch(() => null);
+    console.error('Update booking API error:', errorData);
     throw new Error('Could not update booking status');
   }
 
