@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { supabase } from '../lib/supabaseClient';
+import { createBooking } from '../lib/api';
 import type { Booking, ServiceType } from '../types/booking';
 
 const initialForm: Booking = {
@@ -54,23 +54,20 @@ export function BookingForm() {
       booking_date: form.booking_date,
       booking_time: form.booking_time,
       address: form.address.trim(),
-      message: form.message?.trim() || null,
-      status: 'pending',
-      estimated_price: estimatedPrices[form.service_type],
+      message: form.message?.trim() || '',
     };
 
-    const { error } = await supabase.from('bookings').insert([bookingToInsert]);
+    try {
+      await createBooking(bookingToInsert);
 
-    setLoading(false);
-
-    if (error) {
-      console.error('Supabase insert error:', error);
+      setSuccessMessage('Your cleaning request was sent successfully!');
+      setForm(initialForm);
+    } catch (error) {
+      console.error('Create booking error:', error);
       setErrorMessage('There was an error creating your booking. Please try again.');
-      return;
+    } finally {
+      setLoading(false);
     }
-
-    setSuccessMessage('Your cleaning request was sent successfully!');
-    setForm(initialForm);
   }
 
   return (
