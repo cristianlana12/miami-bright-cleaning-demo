@@ -146,6 +146,11 @@ export function AdminDashboard() {
                 </article>
 
                 <article>
+                    <span>Completed</span>
+                    <strong>{completedBookings}</strong>
+                </article>
+
+                <article>
                     <span>Estimated revenue</span>
                     <strong>${estimatedRevenue}</strong>
                 </article>

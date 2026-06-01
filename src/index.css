@@ -610,7 +610,7 @@ textarea {
 
 .admin-stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 18px;
   margin-bottom: 28px;
 }
@@ -1094,3 +1094,4 @@ textarea {
     grid-template-columns: 1fr;
   }
 }
+
